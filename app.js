@@ -98,10 +98,26 @@ class ProjectManagementDashboard {
         try {
             localStorage.setItem('projectManagementData', JSON.stringify(this.data));
             console.log('資料已儲存到瀏覽器');
+            
+            // 自動產生 sample-data.json 格式的資料供複製
+            this.autoGenerateSampleData();
         } catch (error) {
             console.error('儲存資料時發生錯誤:', error);
             alert('儲存失敗，請檢查瀏覽器設定');
         }
+    }
+
+    // 自動產生 sample-data.json 格式資料
+    autoGenerateSampleData() {
+        const jsonData = JSON.stringify(this.data, null, 2);
+        
+        // 將資料存到一個全域變數，方便在 Console 中取用
+        window.sampleDataForExport = jsonData;
+        
+        console.log('✅ 已自動產生 sample-data.json 格式資料');
+        console.log('📋 複製以下程式碼到 Console 取得資料：');
+        console.log('copy(window.sampleDataForExport)');
+        console.log('📁 然後貼上到 sample-data.json 檔案中');
     }
 
     // 載入範例資料
@@ -1930,20 +1946,30 @@ class ProjectManagementDashboard {
         const dataToExport = this.data;
         const jsonString = JSON.stringify(dataToExport, null, 2);
         
-        // 建立下載連結
+        // 方法一：下載 sample-data.json 檔案
         const blob = new Blob([jsonString], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'my-data.json';
+        a.download = 'sample-data.json';  // 改為直接匯出 sample-data.json
         a.style.display = 'none';
         
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
+
+        // 方法二：複製到剪貼簿
+        navigator.clipboard.writeText(jsonString).then(() => {
+            console.log('✅ 資料已複製到剪貼簿');
+        }).catch(() => {
+            console.log('❌ 無法複製到剪貼簿，請手動複製');
+        });
+
+        // 方法三：存到全域變數供 Console 使用
+        window.sampleDataForExport = jsonString;
         
-        alert('您的資料已匯出為 my-data.json\n請將此檔案上傳到您的 GitHub 儲存庫根目錄，並推送更新。\n這樣網站就會使用您的資料作為預設資料。');
+        alert('✅ 資料匯出完成！\n\n📁 方法一：下載的 sample-data.json 檔案\n📋 方法二：資料已複製到剪貼簿\n💻 方法三：在 Console 輸入 copy(window.sampleDataForExport)\n\n請將內容貼上到 GitHub 的 sample-data.json 檔案中並推送更新。');
     }
 }
 
