@@ -1,0 +1,1575 @@
+/* 基本樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft JhengHei', Arial, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 標題區域 */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    color: white;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+/* 篩選區域 */
+.filter-section {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+}
+
+.filter-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.filter-group input,
+.filter-group select {
+    padding: 8px 12px;
+    border: 2px solid #e1e5e9;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+select[multiple] {
+    height: 80px;
+}
+
+#clear-filters {
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    align-self: flex-end;
+}
+
+#clear-filters:hover {
+    background-color: #c82333;
+}
+
+/* 篩選狀態顯示 */
+.filter-status {
+    background: linear-gradient(135deg, #17a2b8, #138496);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.filter-status.hidden {
+    display: none;
+}
+
+.filter-status-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-status-text {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#active-filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.filter-tag {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.close-filter-status {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.close-filter-status:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* 統計資訊區域 */
+.stats-section {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    flex: 1;
+    min-width: 120px;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+}
+
+.stat-card h3 {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.stat-card span {
+    font-size: 28px;
+    font-weight: bold;
+    color: #667eea;
+}
+
+/* 圖表區域 */
+.chart-section {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.chart-header h2 {
+    color: #333;
+    font-size: 24px;
+}
+
+.legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 15px;
+    border-radius: 3px;
+}
+
+.legend-color.developing {
+    background-color: #28a745;
+}
+
+.legend-color.optimizing {
+    background-color: #ffc107;
+}
+
+.legend-color.maintaining {
+    background-color: #6c757d;
+}
+
+/* 甘特圖區域 */
+.gantt-section {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.gantt-section h2 {
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 10px;
+}
+
+.gantt-section.hidden,
+.table-section.hidden {
+    display: none;
+}
+
+/* 甘特圖樣式 */
+#gantt-chart {
+    overflow-x: auto;
+    min-height: 400px;
+}
+
+/* 時間軸樣式 */
+.time-axis-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #e2e8f0;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    border-radius: 8px 8px 0 0;
+}
+
+.time-axis-header {
+    width: 200px;
+    flex-shrink: 0;
+    font-weight: bold;
+    color: #4a5568;
+    text-align: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.time-axis-timeline {
+    flex: 1;
+    position: relative;
+    height: 50px;
+    background: linear-gradient(to bottom, #f7fafc 0%, #edf2f7 100%);
+    border-radius: 5px;
+    margin-left: 10px;
+    border: 1px solid #cbd5e0;
+}
+
+.time-mark {
+    position: absolute;
+    top: 5px;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: #2d3748;
+    font-weight: 600;
+    background: white;
+    padding: 4px 6px;
+    border-radius: 4px;
+    border: 1px solid #cbd5e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 15;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* 跨年度標記 - 藍色突出 */
+.time-mark.new-year-mark {
+    background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+    color: white;
+    border: 1px solid #2c5282;
+    box-shadow: 0 2px 8px rgba(49, 130, 206, 0.4);
+    font-weight: bold;
+}
+
+.time-mark-month {
+    font-size: 9px;
+    color: #718096;
+}
+
+.time-mark-date {
+    font-size: 11px;
+    color: #2d3748;
+    font-weight: bold;
+}
+
+/* 今日標記 */
+.today-mark {
+    position: absolute;
+    top: 2px;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: white;
+    font-weight: bold;
+    background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+    padding: 4px 6px;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(229, 62, 62, 0.4);
+    z-index: 16;
+    text-align: center;
+    line-height: 1.2;
+    animation: pulse 2s infinite;
+}
+
+.today-label {
+    font-size: 9px;
+}
+
+.today-date {
+    font-size: 10px;
+    font-weight: bold;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.05); }
+}
+
+/* 網格線容器 */
+.time-grid-container {
+    position: absolute;
+    top: 0;
+    left: 210px;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.grid-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(203, 213, 224, 0.5);
+    z-index: 1;
+}
+
+/* 跨年度的粗藍線 */
+.grid-line.year-line {
+    width: 3px;
+    background: linear-gradient(to bottom, #3182ce, rgba(49, 130, 206, 0.3));
+    box-shadow: 0 0 6px rgba(49, 130, 206, 0.5);
+    z-index: 2;
+}
+
+.today-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #e53e3e, rgba(229, 62, 62, 0.3));
+    z-index: 2;
+    box-shadow: 0 0 4px rgba(229, 62, 62, 0.5);
+}
+
+/* 專案容器 */
+.projects-container {
+    position: relative;
+}
+
+.gantt-container {
+    min-width: 800px;
+    position: relative;
+}
+
+.project-group {
+    margin-bottom: 20px;
+}
+
+.project-header {
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    border-left: 4px solid #667eea;
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+
+.system-row {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.3s ease;
+}
+
+.system-row:hover {
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+
+.system-label {
+    width: 200px;
+    font-weight: 500;
+    padding-right: 15px;
+    flex-shrink: 0;
+}
+
+.system-timeline {
+    flex: 1;
+    position: relative;
+    height: 30px;
+    overflow: visible;
+}
+
+.timeline-bar {
+    height: 20px;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.timeline-bar:hover {
+    opacity: 0.8;
+}
+
+.timeline-bar.developing {
+    background-color: #28a745;
+}
+
+.timeline-bar.optimizing {
+    background-color: #ffc107;
+}
+
+.timeline-bar.maintaining {
+    background-color: #6c757d;
+}
+
+.progress-overlay {
+    height: 100%;
+    background: linear-gradient(45deg, 
+        rgba(255,255,255,0.3) 25%, 
+        transparent 25%, 
+        transparent 50%, 
+        rgba(255,255,255,0.3) 50%, 
+        rgba(255,255,255,0.3) 75%, 
+        transparent 75%);
+    background-size: 10px 10px;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.milestone {
+    position: absolute;
+    width: 14px !important;
+    height: 14px !important;
+    border: 2px solid white;
+    border-radius: 50% !important;
+    cursor: pointer;
+    top: 3px;
+    z-index: 10;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    aspect-ratio: 1 / 1;
+    display: block;
+    overflow: hidden;
+}
+
+/* 甘特圖區域的里程碑樣式 */
+.gantt-section .milestone {
+    position: absolute;
+    width: 14px !important;
+    height: 14px !important;
+    border: 2px solid white;
+    border-radius: 50% !important;
+    cursor: pointer;
+    top: 3px;
+    z-index: 10;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    min-width: 14px !important;
+    min-height: 14px !important;
+    max-width: 14px !important;
+    max-height: 14px !important;
+    aspect-ratio: 1 / 1;
+    display: block;
+    overflow: hidden;
+}
+
+.milestone:hover,
+.gantt-section .milestone:hover {
+    transform: scale(1.3);
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+/* 甘特圖中未完成的里程碑 - 紅色 */
+.gantt-section .milestone-pending {
+    background-color: #dc3545;
+}
+
+/* 甘特圖中已完成的里程碑 - 藍色 */
+.gantt-section .milestone-completed {
+    background-color: #007bff;
+}
+
+/* 未完成的里程碑 - 紅色 */
+.milestone-pending {
+    background-color: #dc3545;
+}
+
+/* 已完成的里程碑 - 藍色 */
+.milestone-completed {
+    background-color: #007bff;
+}
+
+
+
+.milestone:hover {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 詳細資訊框（hover時顯示） */
+.milestone-info {
+    position: absolute;
+    top: -110px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    line-height: 1.4;
+    white-space: nowrap;
+    z-index: 25;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    min-width: 120px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.milestone:hover .milestone-info {
+    opacity: 1;
+    visibility: visible;
+}
+
+.milestone-info-title {
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #fff;
+    font-size: 12px;
+}
+
+.milestone-info-date {
+    margin-bottom: 2px;
+    color: #e9ecef;
+    font-size: 10px;
+}
+
+.milestone-info-status {
+    color: #e9ecef;
+    font-size: 10px;
+}
+
+/* 詳細資訊框箭頭 */
+.milestone-info::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
+}
+
+/* 邊界位置調整 */
+.milestone-info.info-right {
+    left: 0;
+    transform: translateX(0);
+}
+
+.milestone:hover .milestone-info.info-right {
+    opacity: 1;
+    visibility: visible;
+}
+
+.milestone-info.info-right::after {
+    left: 20px;
+    margin-left: 0;
+}
+
+.milestone-info.info-left {
+    left: auto;
+    right: 0;
+    transform: translateX(0);
+}
+
+.milestone:hover .milestone-info.info-left {
+    opacity: 1;
+    visibility: visible;
+}
+
+.milestone-info.info-left::after {
+    left: auto;
+    right: 20px;
+    margin-left: 0;
+}
+
+/* 里程碑標籤相關CSS已移除 */
+
+.time-axis {
+    border-top: 1px solid #dee2e6;
+    padding-top: 10px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #6c757d;
+}
+
+/* 詳細資訊面板 */
+.detail-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    z-index: 1000;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.detail-panel.hidden {
+    display: none;
+}
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #e9ecef;
+    background-color: #f8f9fa;
+    border-radius: 10px 10px 0 0;
+}
+
+.detail-header h3 {
+    color: #333;
+    font-size: 20px;
+}
+
+#close-detail {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #6c757d;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+#close-detail:hover {
+    background-color: #e9ecef;
+}
+
+.detail-content {
+    padding: 20px;
+}
+
+.detail-section {
+    margin-bottom: 20px;
+}
+
+.detail-section h4 {
+    color: #667eea;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.info-row {
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.info-label {
+    font-weight: bold;
+    width: 100px;
+    color: #555;
+}
+
+.info-value {
+    flex: 1;
+    color: #333;
+}
+
+.staff-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.staff-tag {
+    background-color: #e9ecef;
+    padding: 4px 8px;
+    border-radius: 15px;
+    font-size: 12px;
+    color: #495057;
+}
+
+.milestone-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.milestone-item:last-child {
+    border-bottom: none;
+}
+
+.milestone-label {
+    font-weight: 500;
+    color: #333;
+}
+
+.milestone-date {
+    color: #6c757d;
+    font-size: 14px;
+}
+
+/* Tooltip */
+.tooltip {
+    position: absolute;
+    background-color: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    pointer-events: none;
+    z-index: 1001;
+    max-width: 200px;
+    line-height: 1.4;
+}
+
+.tooltip.hidden {
+    display: none;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+/* 進度條 */
+.progress-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 8px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #28a745;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 12px;
+    color: #6c757d;
+    min-width: 40px;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .filter-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-group {
+        min-width: auto;
+    }
+    
+    .stats-section {
+        justify-content: center;
+    }
+    
+    .stat-card {
+        min-width: 100px;
+    }
+    
+    .chart-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .system-label {
+        width: 150px;
+    }
+    
+    header h1 {
+        font-size: 2em;
+    }
+    
+    .detail-panel {
+        width: 95%;
+        margin: 10px;
+    }
+}
+
+/* 空狀態 */
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: #6c757d;
+}
+
+.empty-state h3 {
+    margin-bottom: 10px;
+    color: #495057;
+}
+
+/* 載入動畫 */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 管理功能區域 */
+.management-section {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.management-section h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.management-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* 按鈕樣式 */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-small {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+/* 模態框樣式 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #e9ecef;
+    background-color: #f8f9fa;
+    border-radius: 10px 10px 0 0;
+}
+
+.modal-header h3 {
+    color: #333;
+    font-size: 20px;
+    margin: 0;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #6c757d;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.close-modal:hover {
+    background-color: #e9ecef;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+/* 表單樣式 */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #e1e5e9;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e9ecef;
+}
+
+/* 里程碑輸入區域 */
+.milestone-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.milestone-input input {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.milestone-input .milestone-label {
+    flex: 2;
+}
+
+.milestone-input .milestone-date {
+    flex: 1;
+}
+
+.milestone-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: #555;
+    white-space: nowrap;
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+.milestone-checkbox input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+
+#milestones-container {
+    margin-bottom: 10px;
+}
+
+/* 編輯模式樣式 */
+.edit-mode .system-row {
+    position: relative;
+}
+
+.edit-mode .system-row:hover::after {
+    content: '點擊編輯或右鍵刪除';
+    position: absolute;
+    right: 90px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #333;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.edit-mode .project-header {
+    position: relative;
+    cursor: pointer;
+}
+
+.edit-mode .project-header:hover::after {
+    content: '點擊編輯專案或右鍵刪除';
+    position: absolute;
+    right: 90px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #333;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* 編輯和刪除按鈕 */
+.edit-btn, .delete-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    border-radius: 4px;
+    width: 30px;
+    height: 24px;
+    cursor: pointer;
+    font-size: 12px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 15;
+}
+
+.edit-btn {
+    right: 40px;
+    background-color: #28a745;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #218838;
+}
+
+.delete-btn {
+    right: 10px;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 50%;
+}
+
+.edit-mode .edit-btn,
+.edit-mode .delete-btn {
+    display: flex;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* 表格顯示樣式 */
+.table-section {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.table-section h2 {
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 10px;
+}
+
+#project-table-container {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.project-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    background: white;
+    table-layout: fixed;
+}
+
+/* 欄位寬度設定 */
+.project-table th:nth-child(1),
+.project-table td:nth-child(1) {
+    width: 12em; /* 專案名稱：10個中文字 + 內邊距 */
+}
+
+.project-table th:nth-child(2),
+.project-table td:nth-child(2) {
+    width: 9em; /* 專案時間：2025-08-01 ~ 格式 */
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.project-table th:nth-child(3),
+.project-table td:nth-child(3) {
+    width: 20em; /* 系統名稱：18個中文字 + 內邊距 */
+}
+
+.project-table th:nth-child(4),
+.project-table td:nth-child(4) {
+    width: 8em; /* 里程碑時間：2025-08-15 格式 */
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.project-table th:nth-child(5),
+.project-table td:nth-child(5) {
+    width: auto; /* 里程碑事項：佔用剩餘空間 */
+    min-width: 8em;
+}
+
+.project-table th:nth-child(6),
+.project-table td:nth-child(6) {
+    width: 7.5em; /* 承辦人員：6個中文字 + 內邊距 */
+}
+
+.project-table th:nth-child(7),
+.project-table td:nth-child(7) {
+    width: 7.5em; /* 技術人員：6個中文字 + 內邊距 */
+}
+
+.project-table th {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 8px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #5a67d8;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.project-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+}
+
+.project-table tbody tr:hover {
+    background-color: #f7fafc;
+}
+
+.project-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.project-table tbody tr:nth-child(even):hover {
+    background-color: #e2e8f0;
+}
+
+/* 專案行樣式 */
+.project-row {
+    background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%) !important;
+    font-weight: 600;
+    border-left: 4px solid #667eea;
+}
+
+.project-row:hover {
+    background: linear-gradient(135deg, #d1e7dd 0%, #e2d5f6 100%) !important;
+}
+
+/* 系統行樣式 */
+.system-row-table {
+    border-left: 2px solid #28a745;
+    background-color: #f8f9fa !important;
+}
+
+.system-row-table:hover {
+    background-color: #e9ecef !important;
+}
+
+/* 里程碑行樣式 */
+.milestone-row {
+    border-left: 2px solid #ffc107;
+    background-color: #fffbf0 !important;
+    font-size: 13px;
+}
+
+.milestone-row:hover {
+    background-color: #fef3cd !important;
+}
+
+/* 空白行樣式 */
+.empty-cell {
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* 狀態標籤 */
+.status-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.status-developing {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.status-optimizing {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.status-maintaining {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* 里程碑完成狀態 */
+.milestone-completed {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 12px;
+    display: inline-block;
+    border: 1px solid #badbcc;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.milestone-pending {
+    color: #842029;
+    background-color: #f8d7da;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 12px;
+    display: inline-block;
+    border: 1px solid #f5c2c7;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+    .project-table {
+        font-size: 12px;
+    }
+    
+    .project-table th,
+    .project-table td {
+        padding: 8px 4px;
+    }
+}
+
+/* 拖放樣式 */
+.drag-handle {
+    cursor: grab;
+    color: #999;
+    margin-right: 8px;
+    font-size: 12px;
+    user-select: none;
+}
+
+.drag-handle:hover {
+    color: #666;
+}
+
+[draggable="true"] {
+    cursor: grab;
+}
+
+[draggable="true"]:active {
+    cursor: grabbing;
+}
+
+.dragging {
+    opacity: 0.5;
+    transform: rotate(2deg);
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.drop-zone {
+    border: 2px dashed #667eea;
+    background-color: rgba(102, 126, 234, 0.1);
+    border-radius: 5px;
+}
+
+.project-group.drop-zone {
+    margin: 2px 0;
+}
+
+.system-row.drop-zone {
+    margin: 1px 0;
+}
+
+/* 編輯模式下的拖放提示 */
+.edit-mode .project-header,
+.edit-mode .system-label {
+    position: relative;
+}
+
+.edit-mode .project-header::before,
+.edit-mode .system-label::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 1px;
+}
+
+.edit-mode .project-header:hover::before,
+.edit-mode .system-label:hover::before {
+    background-color: #667eea;
+}
+
+/* 拖放動畫效果 */
+.project-group,
+.system-row {
+    transition: all 0.2s ease;
+}
+
+.project-group:hover,
+.system-row:hover {
+    background-color: rgba(0,0,0,0.02);
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+    .management-buttons {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10px;
+    }
+    
+    .milestone-input {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .milestone-input input {
+        margin-bottom: 5px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    /* 移動設備上的拖放調整 */
+    .drag-handle {
+        font-size: 16px;
+        margin-right: 12px;
+    }
+    
+    .edit-mode .project-header::before,
+    .edit-mode .system-label::before {
+        left: -15px;
+        width: 3px;
+        height: 25px;
+    }
+}

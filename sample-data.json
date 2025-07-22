@@ -1,0 +1,113 @@
+[
+  {
+    "projectName": "智慧城市平台",
+    "projectManager": "張經理",
+    "projectStartDate": "2024-01-01",
+    "projectEndDate": "2024-12-31",
+    "systems": [
+      {
+        "systemName": "交通監控系統",
+        "administrators": ["李工程師", "王技師"],
+        "technicians": ["陳開發", "林測試"],
+        "status": "開發中",
+        "progress": 75,
+        "startDate": "2024-01-15",
+        "endDate": "2024-06-30",
+        "milestones": [
+          { "label": "需求分析完成", "date": "2024-02-15" },
+          { "label": "系統設計完成", "date": "2024-03-30" },
+          { "label": "POC 完成", "date": "2024-05-15" },
+          { "label": "系統交付", "date": "2024-06-30" }
+        ]
+      },
+      {
+        "systemName": "環境監測系統",
+        "administrators": ["黃主管"],
+        "technicians": ["劉開發", "吳測試", "蔡分析"],
+        "status": "優化中",
+        "progress": 60,
+        "startDate": "2024-02-01",
+        "endDate": "2024-08-31",
+        "milestones": [
+          { "label": "系統部署", "date": "2024-04-01" },
+          { "label": "效能調優", "date": "2024-06-15" },
+          { "label": "正式上線", "date": "2024-08-31" }
+        ]
+      }
+    ]
+  },
+  {
+    "projectName": "電子商務平台",
+    "projectManager": "李經理",
+    "projectStartDate": "2024-03-01",
+    "projectEndDate": "2024-11-30",
+    "systems": [
+      {
+        "systemName": "購物車系統",
+        "administrators": ["趙主管", "錢負責"],
+        "technicians": ["孫開發"],
+        "status": "維護中",
+        "progress": 100,
+        "startDate": "2024-03-01",
+        "endDate": "2024-07-31",
+        "milestones": [
+          { "label": "系統上線", "date": "2024-06-01" },
+          { "label": "功能擴充", "date": "2024-07-31" }
+        ]
+      },
+      {
+        "systemName": "支付系統",
+        "administrators": ["周技術長"],
+        "technicians": ["吳架構師", "鄭開發", "王測試"],
+        "status": "開發中",
+        "progress": 40,
+        "startDate": "2024-04-01",
+        "endDate": "2024-10-31",
+        "milestones": [
+          { "label": "安全評估", "date": "2024-05-15" },
+          { "label": "第三方整合", "date": "2024-07-30" },
+          { "label": "壓力測試", "date": "2024-09-15" },
+          { "label": "正式發布", "date": "2024-10-31" }
+        ]
+      },
+      {
+        "systemName": "庫存管理系統",
+        "administrators": ["馮主管"],
+        "technicians": ["衛開發", "蔣測試"],
+        "status": "優化中",
+        "progress": 85,
+        "startDate": "2024-05-01",
+        "endDate": "2024-09-30",
+        "milestones": [
+          { "label": "基礎功能完成", "date": "2024-07-01" },
+          { "label": "進階功能開發", "date": "2024-08-15" },
+          { "label": "系統優化", "date": "2024-09-30" }
+        ]
+      }
+    ]
+  },
+  {
+    "projectName": "企業資源規劃系統",
+    "projectManager": "陳經理",
+    "projectStartDate": "2024-02-15",
+    "projectEndDate": "2025-01-31",
+    "systems": [
+      {
+        "systemName": "人力資源模組",
+        "administrators": ["韓主管", "魏負責"],
+        "technicians": ["姚開發", "邵測試", "卜分析"],
+        "status": "開發中",
+        "progress": 30,
+        "startDate": "2024-03-01",
+        "endDate": "2024-12-31",
+        "milestones": [
+          { "label": "需求確認", "date": "2024-04-01" },
+          { "label": "原型開發", "date": "2024-06-30" },
+          { "label": "Alpha 測試", "date": "2024-09-30" },
+          { "label": "Beta 測試", "date": "2024-11-30" },
+          { "label": "正式發布", "date": "2024-12-31" }
+        ]
+      }
+    ]
+  }
+]

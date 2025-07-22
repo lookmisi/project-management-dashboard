@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>專案管理視覺化工具</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>專案管理視覺化工具</h1>
+            <p>追蹤多個專案及其下系統的開發狀況</p>
+        </header>
+
+        <!-- 管理功能區域 -->
+        <div class="management-section">
+            <h2>專案管理</h2>
+            <div class="management-buttons">
+                <button id="add-project-btn" class="btn btn-primary">新增專案</button>
+                <button id="add-system-btn" class="btn btn-secondary">新增系統</button>
+                <button id="edit-mode-btn" class="btn btn-warning">編輯模式</button>
+                <button id="table-view-btn" class="btn btn-info">表格化顯示</button>
+            </div>
+            <div id="drag-drop-hint" class="drag-drop-hint hidden" style="margin-top: 10px; padding: 8px; background-color: #e3f2fd; border-radius: 5px; font-size: 14px; color: #1976d2;">
+                💡 <strong>編輯模式提示：</strong>拖拽 ⋮⋮ 圖示可重新排序專案和系統位置
+            </div>
+        </div>
+
+        <!-- 篩選區域 -->
+        <div class="filter-section">
+            <div class="filter-group">
+                <label for="project-filter">專案名稱：</label>
+                <select id="project-filter" multiple>
+                    <option value="">全部專案</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="system-filter">系統名稱：</label>
+                <input type="text" id="system-filter" placeholder="搜尋系統名稱">
+            </div>
+            
+            <div class="filter-group">
+                <label for="staff-filter">人員：</label>
+                <input type="text" id="staff-filter" placeholder="搜尋承辦人員或技術人員">
+            </div>
+            
+            <div class="filter-group">
+                <label for="status-filter">系統狀態：</label>
+                <select id="status-filter" multiple>
+                    <option value="">全部狀態</option>
+                    <option value="開發中">開發中</option>
+                    <option value="優化中">優化中</option>
+                    <option value="維護中">維護中</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label>
+                    <input type="checkbox" id="incomplete-only"> 僅顯示有未完成時間節點的系統
+                </label>
+            </div>
+            
+            <button id="clear-filters">清除篩選</button>
+        </div>
+
+        <!-- 篩選狀態顯示 -->
+        <div id="filter-status" class="filter-status hidden">
+            <div class="filter-status-content">
+                <span class="filter-status-text">目前篩選條件：</span>
+                <div id="active-filters"></div>
+                <button id="close-filter-status" class="close-filter-status">×</button>
+            </div>
+        </div>
+
+        <!-- 統計資訊區域 -->
+        <div class="stats-section">
+            <div class="stat-card">
+                <h3>專案總數</h3>
+                <span id="total-projects">0</span>
+            </div>
+            <div class="stat-card">
+                <h3>系統總數</h3>
+                <span id="total-systems">0</span>
+            </div>
+            <div class="stat-card">
+                <h3>開發中</h3>
+                <span id="developing-systems">0</span>
+            </div>
+            <div class="stat-card">
+                <h3>優化中</h3>
+                <span id="optimizing-systems">0</span>
+            </div>
+            <div class="stat-card">
+                <h3>維護中</h3>
+                <span id="maintaining-systems">0</span>
+            </div>
+        </div>
+
+        <!-- 甘特圖區域 -->
+        <div class="chart-section">
+            <div class="chart-header">
+                <h2>專案時間軸</h2>
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color developing"></div>
+                        <span>開發中</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color optimizing"></div>
+                        <span>優化中</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color maintaining"></div>
+                        <span>維護中</span>
+                    </div>
+                </div>
+            </div>
+        <!-- 甘特圖顯示區域 -->
+        <div class="gantt-section">
+            <h2>專案進度甘特圖</h2>
+            <div id="gantt-chart"></div>
+        </div>
+
+        <!-- 表格顯示區域 -->
+        <div id="table-section" class="table-section hidden">
+            <h2>專案系統表格</h2>
+            <div id="project-table-container">
+                <table id="project-table" class="project-table">
+                    <thead>
+                        <tr>
+                            <th>專案名稱</th>
+                            <th>專案時間</th>
+                            <th>系統名稱</th>
+                            <th>里程碑時間</th>
+                            <th>里程碑事項</th>
+                            <th>承辦人員</th>
+                            <th>技術人員</th>
+                        </tr>
+                    </thead>
+                    <tbody id="project-table-body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 詳細資訊面板 -->
+        <div id="detail-panel" class="detail-panel hidden">
+            <div class="detail-header">
+                <h3 id="detail-title"></h3>
+                <button id="close-detail">&times;</button>
+            </div>
+            <div class="detail-content">
+                <div class="detail-section">
+                    <h4>基本資訊</h4>
+                    <div id="basic-info"></div>
+                </div>
+                <div class="detail-section">
+                    <h4>負責人員</h4>
+                    <div id="staff-info"></div>
+                </div>
+                <div class="detail-section">
+                    <h4>重要時間節點</h4>
+                    <div id="milestones-info"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tooltip -->
+        <div id="tooltip" class="tooltip hidden"></div>
+
+        <!-- 新增專案模態框 -->
+        <div id="add-project-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>新增專案</h3>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="add-project-form">
+                        <div class="form-group">
+                            <label for="project-name">專案名稱：</label>
+                            <input type="text" id="project-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="project-manager">專案PM：</label>
+                            <input type="text" id="project-manager" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="project-start-date">開始日期：</label>
+                            <input type="date" id="project-start-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="project-end-date">結束日期：</label>
+                            <input type="date" id="project-end-date" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">建立專案</button>
+                            <button type="button" class="btn btn-secondary cancel-btn">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 新增系統模態框 -->
+        <div id="add-system-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>新增系統</h3>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="add-system-form" autocomplete="off" data-lpignore="true" data-form-type="other">
+                        <div class="form-group">
+                            <label for="system-project">所屬專案：</label>
+                            <select id="system-project" required autocomplete="off" data-lpignore="true">
+                                <option value="">請選擇專案</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="system-name">系統名稱：</label>
+                            <input type="text" id="system-name" required autocomplete="off" data-lpignore="true" data-form-type="other">
+                        </div>
+                        <div class="form-group">
+                            <label for="system-administrators">承辦人員（以逗號分隔）：</label>
+                            <input type="text" id="system-administrators" placeholder="例：張三,李四" required autocomplete="off" data-lpignore="true" data-form-type="other">
+                        </div>
+                        <div class="form-group">
+                            <label for="system-technicians">技術人員（以逗號分隔）：</label>
+                            <input type="text" id="system-technicians" placeholder="例：王五,趙六" required autocomplete="off" data-lpignore="true" data-form-type="other">
+                        </div>
+                        <div class="form-group">
+                            <label for="system-status">系統狀態：</label>
+                            <select id="system-status" required autocomplete="off" data-lpignore="true">
+                                <option value="">請選擇狀態</option>
+                                <option value="開發中">開發中</option>
+                                <option value="優化中">優化中</option>
+                                <option value="維護中">維護中</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="system-progress">進度百分比：</label>
+                            <input type="number" id="system-progress" min="0" max="100" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="system-start-date">開始日期：</label>
+                            <input type="date" id="system-start-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="system-end-date">結束日期：</label>
+                            <input type="date" id="system-end-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>重要時間節點：</label>
+                            <div id="milestones-container">
+                                <div class="milestone-input">
+                                    <input type="text" placeholder="里程碑名稱" class="milestone-label" autocomplete="off" name="milestone_initial_label">
+                                    <input type="date" class="milestone-date" autocomplete="off" name="milestone_initial_date">
+                                    <button type="button" class="btn btn-danger btn-small remove-milestone">移除</button>
+                                </div>
+                            </div>
+                            <button type="button" id="add-milestone-btn" class="btn btn-secondary btn-small">新增里程碑</button>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">建立系統</button>
+                            <button type="button" class="btn btn-secondary cancel-btn">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 編輯專案模態框 -->
+        <div id="edit-project-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>編輯專案</h3>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-project-form">
+                        <input type="hidden" id="edit-project-original-name">
+                        <div class="form-group">
+                            <label for="edit-project-name">專案名稱：</label>
+                            <input type="text" id="edit-project-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-project-manager">專案PM：</label>
+                            <input type="text" id="edit-project-manager" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-project-start-date">開始日期：</label>
+                            <input type="date" id="edit-project-start-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-project-end-date">結束日期：</label>
+                            <input type="date" id="edit-project-end-date" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">更新專案</button>
+                            <button type="button" class="btn btn-secondary cancel-btn">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 編輯系統模態框 -->
+        <div id="edit-system-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>編輯系統</h3>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-system-form" autocomplete="off" data-lpignore="true" data-form-type="other">
+                        <input type="hidden" id="edit-system-project-name">
+                        <input type="hidden" id="edit-system-original-name">
+                        <div class="form-group">
+                            <label for="edit-system-name">系統名稱：</label>
+                            <input type="text" id="edit-system-name" required autocomplete="off" data-lpignore="true" data-form-type="other">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-system-administrators">承辦人員（以逗號分隔）：</label>
+                            <input type="text" id="edit-system-administrators" placeholder="例：張三,李四" required autocomplete="off" data-lpignore="true" data-form-type="other">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-system-technicians">技術人員（以逗號分隔）：</label>
+                            <input type="text" id="edit-system-technicians" placeholder="例：王五,趙六" required autocomplete="off" data-lpignore="true" data-form-type="other">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-system-status">系統狀態：</label>
+                            <select id="edit-system-status" required autocomplete="off" data-lpignore="true">
+                                <option value="">請選擇狀態</option>
+                                <option value="開發中">開發中</option>
+                                <option value="優化中">優化中</option>
+                                <option value="維護中">維護中</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-system-progress">進度百分比：</label>
+                            <input type="number" id="edit-system-progress" min="0" max="100" value="0" autocomplete="off" data-lpignore="true" data-form-type="other">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-system-start-date">開始日期：</label>
+                            <input type="date" id="edit-system-start-date" required autocomplete="off" data-lpignore="true" data-form-type="other">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-system-end-date">結束日期：</label>
+                            <input type="date" id="edit-system-end-date" required autocomplete="off" data-lpignore="true" data-form-type="other">
+                        </div>
+                        <div class="form-group">
+                            <label>重要時間節點：</label>
+                            <div id="edit-milestones-container">
+                            </div>
+                            <button type="button" id="edit-add-milestone-btn" class="btn btn-secondary btn-small">新增里程碑</button>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">更新系統</button>
+                            <button type="button" class="btn btn-secondary cancel-btn">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 確認刪除模態框 -->
+        <div id="confirm-delete-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>確認刪除</h3>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p id="delete-message"></p>
+                    <div class="form-actions">
+                        <button id="confirm-delete-btn" class="btn btn-danger">確認刪除</button>
+                        <button type="button" class="btn btn-secondary cancel-btn">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
