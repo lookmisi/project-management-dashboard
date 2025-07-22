@@ -69,9 +69,15 @@ class ProjectManagementDashboard {
                     this.renderDashboard();
                 })
                 .catch(() => {
-                    this.loadSampleData();
-                    console.log('載入預設範例資料');
-                    this.renderDashboard();
+                    this.loadSampleData()
+                        .then(() => {
+                            console.log('載入預設範例資料成功');
+                            this.renderDashboard();
+                        })
+                        .catch((error) => {
+                            console.error('載入所有資料都失敗:', error);
+                            this.renderDashboard();
+                        });
                 });
         }
     }
@@ -115,123 +121,24 @@ class ProjectManagementDashboard {
         }
     }
 
-    loadSampleData() {
-        this.data = [
-            {
-                projectName: "智慧城市平台",
-                projectManager: "張經理",
-                projectStartDate: "2024-01-01",
-                projectEndDate: "2024-12-31",
-                systems: [
-                    {
-                        systemName: "交通監控系統",
-                        administrators: ["李工程師", "王技師"],
-                        technicians: ["陳開發", "林測試"],
-                        status: "開發中",
-                        progress: 75,
-                        startDate: "2024-01-15",
-                        endDate: "2024-06-30",
-                        milestones: [
-                            { label: "需求分析完成", date: "2024-02-15", completed: true },
-                            { label: "系統設計完成", date: "2024-03-30", completed: true },
-                            { label: "POC 完成", date: "2024-05-15", completed: true },
-                            { label: "系統交付", date: "2024-06-30", completed: false }
-                        ]
-                    },
-                    {
-                        systemName: "環境監測系統",
-                        administrators: ["黃主管"],
-                        technicians: ["劉開發", "吳測試", "蔡分析"],
-                        status: "優化中",
-                        progress: 60,
-                        startDate: "2024-02-01",
-                        endDate: "2024-08-31",
-                        milestones: [
-                            { label: "系統部署", date: "2024-04-01", completed: true },
-                            { label: "效能調優", date: "2024-06-15", completed: false },
-                            { label: "正式上線", date: "2024-08-31", completed: false }
-                        ]
-                    }
-                ]
-            },
-            {
-                projectName: "電子商務平台",
-                projectManager: "李經理",
-                projectStartDate: "2024-03-01",
-                projectEndDate: "2024-11-30",
-                systems: [
-                    {
-                        systemName: "購物車系統",
-                        administrators: ["趙主管", "錢負責"],
-                        technicians: ["孫開發"],
-                        status: "維護中",
-                        progress: 100,
-                        startDate: "2024-03-01",
-                        endDate: "2024-07-31",
-                        milestones: [
-                            { label: "系統上線", date: "2024-06-01", completed: true },
-                            { label: "功能擴充", date: "2024-07-31", completed: true }
-                        ]
-                    },
-                    {
-                        systemName: "支付系統",
-                        administrators: ["周技術長"],
-                        technicians: ["吳架構師", "鄭開發", "王測試"],
-                        status: "開發中",
-                        progress: 40,
-                        startDate: "2024-04-01",
-                        endDate: "2024-10-31",
-                        milestones: [
-                            { label: "安全評估", date: "2024-05-15", completed: true },
-                            { label: "第三方整合", date: "2024-07-30", completed: false },
-                            { label: "壓力測試", date: "2024-09-15", completed: false },
-                            { label: "正式發布", date: "2024-10-31", completed: false }
-                        ]
-                    },
-                    {
-                        systemName: "庫存管理系統",
-                        administrators: ["馮主管"],
-                        technicians: ["衛開發", "蔣測試"],
-                        status: "優化中",
-                        progress: 85,
-                        startDate: "2024-05-01",
-                        endDate: "2024-09-30",
-                        milestones: [
-                            { label: "基礎功能完成", date: "2024-07-01", completed: true },
-                            { label: "進階功能開發", date: "2024-08-15", completed: false },
-                            { label: "系統優化", date: "2024-09-30", completed: false }
-                        ]
-                    }
-                ]
-            },
-            {
-                projectName: "企業資源規劃系統",
-                projectManager: "陳經理",
-                projectStartDate: "2024-02-15",
-                projectEndDate: "2025-01-31",
-                systems: [
-                    {
-                        systemName: "人力資源模組",
-                        administrators: ["韓主管", "魏負責"],
-                        technicians: ["姚開發", "邵測試", "卜分析"],
-                        status: "開發中",
-                        progress: 30,
-                        startDate: "2024-03-01",
-                        endDate: "2024-12-31",
-                        milestones: [
-                            { label: "需求確認", date: "2024-04-01", completed: true },
-                            { label: "原型開發", date: "2024-06-30", completed: false },
-                            { label: "Alpha 測試", date: "2024-09-30", completed: false },
-                            { label: "Beta 測試", date: "2024-11-30", completed: false },
-                            { label: "正式發布", date: "2024-12-31", completed: false }
-                        ]
-                    }
-                ]
+    async loadSampleData() {
+        try {
+            const response = await fetch('sample-data.json');
+            if (!response.ok) {
+                throw new Error('無法載入範例資料');
             }
-        ];
-
-        this.calculateTimeRange();
-        this.filteredData = [...this.data];
+            const data = await response.json();
+            this.data = data;
+            this.calculateTimeRange();
+            this.filteredData = [...this.data];
+            console.log('已載入 sample-data.json 資料');
+        } catch (error) {
+            console.error('載入範例資料失敗:', error);
+            // 如果載入失敗，設置空資料
+            this.data = [];
+            this.calculateTimeRange();
+            this.filteredData = [];
+        }
     }
 
     // 計算時間範圍
