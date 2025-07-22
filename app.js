@@ -61,8 +61,15 @@ class ProjectManagementDashboard {
             this.data = savedData;
             console.log('已從瀏覽器儲存載入資料');
         } else {
-            this.loadSampleData();
-            console.log('載入預設範例資料');
+            // 嘗試載入 my-data.json，如果不存在則載入 sample-data.json
+            this.loadMyData()
+                .then(() => {
+                    console.log('載入自訂資料成功');
+                })
+                .catch(() => {
+                    this.loadSampleData();
+                    console.log('載入預設範例資料');
+                });
         }
     }
 
@@ -89,6 +96,22 @@ class ProjectManagementDashboard {
     }
 
     // 載入範例資料
+    // 載入自訂資料
+    async loadMyData() {
+        try {
+            const response = await fetch('my-data.json');
+            if (!response.ok) {
+                throw new Error('無法載入自訂資料');
+            }
+            const data = await response.json();
+            this.data = data;
+            return Promise.resolve();
+        } catch (error) {
+            console.log('自訂資料檔案不存在，使用預設資料');
+            return Promise.reject(error);
+        }
+    }
+
     loadSampleData() {
         this.data = [
             {
@@ -256,6 +279,7 @@ class ProjectManagementDashboard {
         document.getElementById('add-system-btn').addEventListener('click', () => this.showAddSystemModal());
         document.getElementById('edit-mode-btn').addEventListener('click', () => this.toggleEditMode());
         document.getElementById('table-view-btn').addEventListener('click', () => this.toggleTableView());
+        document.getElementById('export-my-data-btn').addEventListener('click', () => this.exportMyData());
 
         // 模態框事件
         this.setupModalEventListeners();
@@ -1989,6 +2013,27 @@ class ProjectManagementDashboard {
                 tableBody.appendChild(separatorRow);
             }
         });
+    }
+
+    // 匯出我的資料為 my-data.json
+    exportMyData() {
+        const dataToExport = this.data;
+        const jsonString = JSON.stringify(dataToExport, null, 2);
+        
+        // 建立下載連結
+        const blob = new Blob([jsonString], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'my-data.json';
+        a.style.display = 'none';
+        
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
+        alert('您的資料已匯出為 my-data.json\n請將此檔案上傳到您的 GitHub 儲存庫根目錄，並推送更新。\n這樣網站就會使用您的資料作為預設資料。');
     }
 }
 
