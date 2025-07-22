@@ -162,6 +162,11 @@
         "endDate": "2025-12-10",
         "milestones": [
           {
+            "label": "系統測試及資料撰寫",
+            "date": "2025-10-20",
+            "completed": false
+          },
+          {
             "label": "繳交命題輔助系統相關系統軟體、應用文件等",
             "date": "2025-11-20",
             "completed": false
@@ -181,6 +186,11 @@
         "startDate": "2025-12-10",
         "endDate": "2026-02-26",
         "milestones": [
+          {
+            "label": "系統測試及資料撰寫",
+            "date": "2026-01-11",
+            "completed": false
+          },
           {
             "label": "繳交系統所有項目相關系統軟體、應用文件、上線計畫等",
             "date": "2026-02-11",
