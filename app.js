@@ -60,15 +60,18 @@ class ProjectManagementDashboard {
         if (savedData && savedData.length > 0) {
             this.data = savedData;
             console.log('已從瀏覽器儲存載入資料');
+            this.renderDashboard();
         } else {
             // 嘗試載入 my-data.json，如果不存在則載入 sample-data.json
             this.loadMyData()
                 .then(() => {
                     console.log('載入自訂資料成功');
+                    this.renderDashboard();
                 })
                 .catch(() => {
                     this.loadSampleData();
                     console.log('載入預設範例資料');
+                    this.renderDashboard();
                 });
         }
     }
