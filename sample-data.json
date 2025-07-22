@@ -1,0 +1,735 @@
+[
+  {
+    "projectName": "職安系統重建計畫",
+    "projectManager": "孟穎",
+    "projectStartDate": "2025-01-01",
+    "projectEndDate": "2025-12-31",
+    "systems": [
+      {
+        "systemName": "系統主視覺設計(機管、訓管)",
+        "administrators": [
+          "孝詠"
+        ],
+        "technicians": [
+          "意如",
+          "宇聖"
+        ],
+        "status": "開發中",
+        "progress": 50,
+        "startDate": "2025-01-01",
+        "endDate": "2025-02-28",
+        "milestones": [
+          {
+            "label": "完成主視覺設計",
+            "date": "2025-02-15",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "systemName": "資料管理、報備作業建置",
+        "administrators": [
+          "孝詠"
+        ],
+        "technicians": [
+          "意如",
+          "宇聖"
+        ],
+        "status": "開發中",
+        "progress": 30,
+        "startDate": "2025-02-01",
+        "endDate": "2025-05-31",
+        "milestones": [
+          {
+            "label": "【訓管】-『場所、講師等資料管理』、『班級報備作業及管理』及『學員結訓登錄作業』；【機管】-『審核班級』及『相關檢視』",
+            "date": "2025-05-15",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "systemName": "班級與學員資料異動申請與審核建置",
+        "administrators": [
+          "孝詠"
+        ],
+        "technicians": [
+          "意如",
+          "宇聖"
+        ],
+        "status": "開發中",
+        "progress": 0,
+        "startDate": "2025-06-01",
+        "endDate": "2025-08-30",
+        "milestones": [
+          {
+            "label": "【訓管】-『班級與學員資料異動申請』；【機管】-『班級與學員資料異動審核』",
+            "date": "2025-08-15",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "systemName": "學員資料、補證、結訓、電腦化測驗功能建置",
+        "administrators": [
+          "孝詠"
+        ],
+        "technicians": [
+          "意如",
+          "宇聖"
+        ],
+        "status": "開發中",
+        "progress": 0,
+        "startDate": "2025-07-01",
+        "endDate": "2025-08-30",
+        "milestones": [
+          {
+            "label": "【訓管】-『學員資料查詢及補證登記管理』、『結訓電腦測驗作業』；【機管】-『班級及學員資料查詢』、『統計資料匯出』",
+            "date": "2025-08-15",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "systemName": "整合測試",
+        "administrators": [
+          "孝詠"
+        ],
+        "technicians": [
+          "意如",
+          "宇聖"
+        ],
+        "status": "開發中",
+        "progress": 0,
+        "startDate": "2025-09-01",
+        "endDate": "2025-10-31",
+        "milestones": [
+          {
+            "label": "整合測試",
+            "date": "2025-09-01",
+            "completed": false
+          },
+          {
+            "label": "測試計畫撰寫",
+            "date": "2025-09-15",
+            "completed": false
+          },
+          {
+            "label": "繳交結案報告",
+            "date": "2025-10-01",
+            "completed": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "projectName": "數位命題工作平臺建置案",
+    "projectManager": "俊傑",
+    "projectStartDate": "2025-08-01",
+    "projectEndDate": "2026-04-30",
+    "systems": [
+      {
+        "systemName": "命題系統需求分析",
+        "administrators": [
+          "孝詠"
+        ],
+        "technicians": [
+          "錦蔚"
+        ],
+        "status": "開發中",
+        "progress": 0,
+        "startDate": "2025-07-22",
+        "endDate": "2025-08-29",
+        "milestones": [
+          {
+            "label": "系統規範書、高階設計書",
+            "date": "2025-08-15",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "systemName": "命題系統、功能開發建置完成",
+        "administrators": [
+          "孝詠"
+        ],
+        "technicians": [
+          "錦蔚"
+        ],
+        "status": "開發中",
+        "progress": 0,
+        "startDate": "2025-08-29",
+        "endDate": "2025-12-10",
+        "milestones": [
+          {
+            "label": "繳交命題輔助系統相關系統軟體、應用文件等",
+            "date": "2025-11-20",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "systemName": "所有系統開發建置完成",
+        "administrators": [
+          "孝詠"
+        ],
+        "technicians": [
+          "錦蔚"
+        ],
+        "status": "開發中",
+        "progress": 0,
+        "startDate": "2025-12-10",
+        "endDate": "2026-02-26",
+        "milestones": [
+          {
+            "label": "繳交系統所有項目相關系統軟體、應用文件、上線計畫等",
+            "date": "2026-02-11",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "systemName": "駐點輔導(每週3天，每日8小時，總計約36個工作天)",
+        "administrators": [
+          "待補"
+        ],
+        "technicians": [
+          "錦蔚"
+        ],
+        "status": "維護中",
+        "progress": 0,
+        "startDate": "2026-02-27",
+        "endDate": "2026-05-31",
+        "milestones": [
+          {
+            "label": "完成駐點任務",
+            "date": "2026-05-31",
+            "completed": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "projectName": "資安人才培訓服務系統委外建置案",
+    "projectManager": "俊豪",
+    "projectStartDate": "2025-01-01",
+    "projectEndDate": "2026-04-30",
+    "systems": [
+      {
+        "systemName": "工作計畫書(V1.0)及專案人員簽署文件",
+        "administrators": [
+          "碩遠",
+          "黛玲"
+        ],
+        "technicians": [
+          "無"
+        ],
+        "status": "開發中",
+        "progress": 100,
+        "startDate": "2025-01-01",
+        "endDate": "2025-01-30",
+        "milestones": [
+          {
+            "label": "文件交付",
+            "date": "2025-01-30",
+            "completed": true
+          }
+        ]
+      },
+      {
+        "systemName": "作業系統環境建置階段",
+        "administrators": [
+          "碩遠",
+          "黛玲"
+        ],
+        "technicians": [
+          "意如",
+          "錦蔚",
+          "明融",
+          "書緯"
+        ],
+        "status": "開發中",
+        "progress": 100,
+        "startDate": "2025-05-26",
+        "endDate": "2025-06-30",
+        "milestones": [
+          {
+            "label": "環境建置與確認",
+            "date": "2025-06-27",
+            "completed": true
+          }
+        ]
+      },
+      {
+        "systemName": "系統開發階段",
+        "administrators": [
+          "碩遠",
+          "黛玲"
+        ],
+        "technicians": [
+          "意如",
+          "錦蔚",
+          "明融",
+          "書緯"
+        ],
+        "status": "開發中",
+        "progress": 20,
+        "startDate": "2025-05-26",
+        "endDate": "2025-11-30",
+        "milestones": [
+          {
+            "label": "資料移轉開發",
+            "date": "2025-06-10",
+            "completed": true
+          },
+          {
+            "label": "API整合",
+            "date": "2025-08-01",
+            "completed": false
+          },
+          {
+            "label": "測試問題修正",
+            "date": "2025-10-15",
+            "completed": false
+          },
+          {
+            "label": "前端開發、後端開發、系統程式規格書",
+            "date": "2025-10-31",
+            "completed": false
+          },
+          {
+            "label": "撰寫第三期執行報告書",
+            "date": "2025-11-30",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "systemName": "系統測試階段",
+        "administrators": [
+          "碩遠",
+          "黛玲"
+        ],
+        "technicians": [
+          "意如",
+          "錦蔚",
+          "明融",
+          "書緯"
+        ],
+        "status": "開發中",
+        "progress": 0,
+        "startDate": "2025-11-01",
+        "endDate": "2025-12-09",
+        "milestones": [
+          {
+            "label": "撰寫系統測試計畫",
+            "date": "2025-11-28",
+            "completed": false
+          },
+          {
+            "label": "撰寫測試報告、資料移轉測試",
+            "date": "2025-12-08",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "systemName": "驗收測試(UAT)",
+        "administrators": [
+          "碩遠",
+          "黛玲"
+        ],
+        "technicians": [
+          "意如",
+          "錦蔚",
+          "明融",
+          "書緯"
+        ],
+        "status": "開發中",
+        "progress": 0,
+        "startDate": "2025-12-15",
+        "endDate": "2025-12-31",
+        "milestones": [
+          {
+            "label": "執行CI/CD流程",
+            "date": "2025-12-19",
+            "completed": false
+          },
+          {
+            "label": "IV&V驗測、執行UAT測試",
+            "date": "2025-12-26",
+            "completed": false
+          },
+          {
+            "label": "收集使用者反饋並修正問題、撰寫資通系統部署報告書、使用者驗收",
+            "date": "2025-12-31",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "systemName": "資通安全檢測",
+        "administrators": [
+          "碩遠",
+          "黛玲"
+        ],
+        "technicians": [
+          "意如",
+          "錦蔚",
+          "明融",
+          "書緯"
+        ],
+        "status": "開發中",
+        "progress": 0,
+        "startDate": "2025-12-08",
+        "endDate": "2026-05-20",
+        "milestones": [
+          {
+            "label": "網頁個資掃描、第三方元件安全檢測、主機系統弱點檢測、網頁弱點檢測",
+            "date": "2025-12-12",
+            "completed": false
+          },
+          {
+            "label": "源碼掃描、滲透測試",
+            "date": "2025-12-19",
+            "completed": false
+          },
+          {
+            "label": "撰寫資通安全檢測計畫書、報告書",
+            "date": "2025-12-31",
+            "completed": false
+          },
+          {
+            "label": "IV&V資通安全檢測",
+            "date": "2026-05-20",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "systemName": "系統上線",
+        "administrators": [
+          "碩遠",
+          "黛玲"
+        ],
+        "technicians": [
+          "意如",
+          "錦蔚",
+          "明融",
+          "書緯"
+        ],
+        "status": "開發中",
+        "progress": 0,
+        "startDate": "2026-01-05",
+        "endDate": "2026-04-30",
+        "milestones": [
+          {
+            "label": "制定系統上線計畫",
+            "date": "2026-01-15",
+            "completed": false
+          },
+          {
+            "label": "系統相關報告書及計畫書",
+            "date": "2026-02-28",
+            "completed": false
+          },
+          {
+            "label": "系統使用手冊、原始碼、資料備份授權等",
+            "date": "2026-03-31",
+            "completed": false
+          },
+          {
+            "label": "教育訓練(成果報告)、新舊系統轉換、全案執行報告",
+            "date": "2026-04-30",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "systemName": "上線觀察",
+        "administrators": [
+          "碩遠",
+          "黛玲"
+        ],
+        "technicians": [
+          "意如",
+          "錦蔚",
+          "明融",
+          "書緯"
+        ],
+        "status": "開發中",
+        "progress": 0,
+        "startDate": "2026-04-30",
+        "endDate": "2026-05-15",
+        "milestones": [
+          {
+            "label": "持續監控確認、修正及上線報告書",
+            "date": "2026-05-15",
+            "completed": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "projectName": "職安教育訓練資訊系統(訓練)",
+    "projectManager": "孟穎",
+    "projectStartDate": "2025-01-01",
+    "projectEndDate": "2025-12-31",
+    "systems": [
+      {
+        "systemName": "資訊網(外網)",
+        "administrators": [
+          "孝詠"
+        ],
+        "technicians": [
+          "意如"
+        ],
+        "status": "維護中",
+        "progress": 0,
+        "startDate": "2025-01-01",
+        "endDate": "2025-12-31",
+        "milestones": []
+      },
+      {
+        "systemName": "訓練單位管理系統",
+        "administrators": [
+          "孝詠"
+        ],
+        "technicians": [
+          "意如"
+        ],
+        "status": "優化中",
+        "progress": 0,
+        "startDate": "2025-01-01",
+        "endDate": "2025-12-31",
+        "milestones": [
+          {
+            "label": "學員資料異動及結訓方式優化",
+            "date": "2025-09-30",
+            "completed": false
+          },
+          {
+            "label": "新增在職及一般安衛職類課表上傳",
+            "date": "2025-11-01",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "systemName": "機關管理系統",
+        "administrators": [
+          "孝詠"
+        ],
+        "technicians": [
+          "意如"
+        ],
+        "status": "優化中",
+        "progress": 0,
+        "startDate": "2025-01-01",
+        "endDate": "2025-12-31",
+        "milestones": [
+          {
+            "label": "學員資料異動及結訓方式優化",
+            "date": "2025-09-30",
+            "completed": false
+          },
+          {
+            "label": "新增在職及一般安衛職類課表上傳",
+            "date": "2025-11-01",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "systemName": "訓練單位評鑑系統",
+        "administrators": [
+          "怡岑"
+        ],
+        "technicians": [
+          "意如"
+        ],
+        "status": "維護中",
+        "progress": 0,
+        "startDate": "2025-01-01",
+        "endDate": "2025-12-31",
+        "milestones": []
+      },
+      {
+        "systemName": "訓練單位認可系統",
+        "administrators": [
+          "碩遠"
+        ],
+        "technicians": [
+          "意如"
+        ],
+        "status": "維護中",
+        "progress": 0,
+        "startDate": "2025-01-01",
+        "endDate": "2025-12-31",
+        "milestones": []
+      },
+      {
+        "systemName": "專責輔導員系統",
+        "administrators": [
+          "孝詠"
+        ],
+        "technicians": [
+          "書緯"
+        ],
+        "status": "維護中",
+        "progress": 0,
+        "startDate": "2025-01-01",
+        "endDate": "2025-12-31",
+        "milestones": []
+      },
+      {
+        "systemName": "職安署辦理在職訓練系統",
+        "administrators": [
+          "孝詠"
+        ],
+        "technicians": [
+          "書緯"
+        ],
+        "status": "優化中",
+        "progress": 0,
+        "startDate": "2025-01-01",
+        "endDate": "2025-12-31",
+        "milestones": [
+          {
+            "label": "輔導員登入資格",
+            "date": "2025-08-30",
+            "completed": false
+          }
+        ]
+      },
+      {
+        "systemName": "科技辦訓智慧管理系統",
+        "administrators": [
+          "孝詠"
+        ],
+        "technicians": [
+          "錦蔚"
+        ],
+        "status": "優化中",
+        "progress": 0,
+        "startDate": "2025-01-01",
+        "endDate": "2025-12-31",
+        "milestones": [
+          {
+            "label": "新增在職及一般安衛職類",
+            "date": "2025-12-20",
+            "completed": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "projectName": "職安教育訓練資訊系統(測驗)",
+    "projectManager": "孟穎",
+    "projectStartDate": "2025-01-01",
+    "projectEndDate": "2025-12-31",
+    "systems": [
+      {
+        "systemName": "管控輔助系統",
+        "administrators": [
+          "宇翔"
+        ],
+        "technicians": [
+          "錦蔚"
+        ],
+        "status": "維護中",
+        "progress": 0,
+        "startDate": "2025-01-01",
+        "endDate": "2025-12-31",
+        "milestones": []
+      },
+      {
+        "systemName": "題庫管理系統",
+        "administrators": [
+          "宇翔"
+        ],
+        "technicians": [
+          "錦蔚"
+        ],
+        "status": "維護中",
+        "progress": 0,
+        "startDate": "2025-01-01",
+        "endDate": "2025-12-31",
+        "milestones": []
+      },
+      {
+        "systemName": "專案管理系統",
+        "administrators": [
+          "宇翔"
+        ],
+        "technicians": [
+          "錦蔚"
+        ],
+        "status": "維護中",
+        "progress": 0,
+        "startDate": "2025-01-01",
+        "endDate": "2025-12-31",
+        "milestones": []
+      },
+      {
+        "systemName": "測驗系統",
+        "administrators": [
+          "宇翔"
+        ],
+        "technicians": [
+          "錦蔚"
+        ],
+        "status": "維護中",
+        "progress": 0,
+        "startDate": "2025-01-01",
+        "endDate": "2025-12-31",
+        "milestones": []
+      },
+      {
+        "systemName": "試務管理系統",
+        "administrators": [
+          "宇翔"
+        ],
+        "technicians": [
+          "錦蔚"
+        ],
+        "status": "維護中",
+        "progress": 0,
+        "startDate": "2025-01-01",
+        "endDate": "2025-12-31",
+        "milestones": []
+      },
+      {
+        "systemName": "測驗試場認可及異動線上申請與審查系統",
+        "administrators": [
+          "柏鑫"
+        ],
+        "technicians": [
+          "錦蔚"
+        ],
+        "status": "維護中",
+        "progress": 0,
+        "startDate": "2025-01-01",
+        "endDate": "2025-12-31",
+        "milestones": []
+      },
+      {
+        "systemName": "活動報名子系統",
+        "administrators": [
+          "柏鑫"
+        ],
+        "technicians": [
+          "書緯"
+        ],
+        "status": "維護中",
+        "progress": 0,
+        "startDate": "2025-01-01",
+        "endDate": "2025-12-31",
+        "milestones": []
+      }
+    ]
+  }
+]
