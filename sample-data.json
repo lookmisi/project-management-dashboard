@@ -483,6 +483,39 @@
     ]
   },
   {
+    "projectName": "檔案管理局系統維運案",
+    "projectManager": "陳奕璇",
+    "projectStartDate": "2025-09-01",
+    "projectEndDate": "2027-04-14",
+    "systems": [
+      {
+        "systemName": "認證網",
+        "administrators": [
+          "陳奕璇"
+        ],
+        "technicians": [
+          "不確定"
+        ],
+        "status": "開發中",
+        "progress": 0,
+        "startDate": "2025-09-01",
+        "endDate": "2026-03-31",
+        "milestones": [
+          {
+            "label": "五年證書延展功能+站內搜尋功能",
+            "date": "2025-11-28",
+            "completed": false
+          },
+          {
+            "label": "認證網優化功能",
+            "date": "2026-05-15",
+            "completed": false
+          }
+        ]
+      }
+    ]
+  },
+  {
     "projectName": "職安教育訓練資訊系統(訓練)",
     "projectManager": "孟穎",
     "projectStartDate": "2025-01-01",
